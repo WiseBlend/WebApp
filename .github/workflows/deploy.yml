@@ -46,7 +46,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: ./build
+          path: ./out # Next.js output directory
   # Deployment job
   deploy:
     environment:

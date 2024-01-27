@@ -80,7 +80,7 @@ jobs:
       - name: List output
         run: |
           ls -la ./
-          ls -la ./next
+          ls -la ./.next
           ls -la ./out
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

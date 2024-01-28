@@ -1,7 +1,14 @@
 "use client";
 
-import { Dispatch, SetStateAction, useContext, useState } from "react";
+import {
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useContext,
+  useState,
+} from "react";
 import { Playfair_Display } from "next/font/google";
+import { Card } from "../card";
 import { SearchContext } from "./context";
 import { Product } from "./types";
 
@@ -10,14 +17,13 @@ const heading = Playfair_Display({ subsets: ["latin"] });
 export default function SearchResults() {
   const { products } = useContext(SearchContext);
   const [product, setProduct] = useState<Product>(products[0]);
-  const inlineStyle = { backgroundImage: `url(${product.dupe_product_image})` };
 
   return (
     <div className="products mt-12">
       <div className="flex gap-x-8">
         <div
           className="bg-white border border-gray-300 rounded-lg bg-contain bg-no-repeat bg-center grow basis-full"
-          style={inlineStyle}
+          style={{ backgroundImage: `url(${product.dupe_product_image})` }}
         ></div>
         <div className="grow basis-full">
           <h2 className={`text-6xl font-semibold ${heading.className}`}>
@@ -56,14 +62,27 @@ export default function SearchResults() {
         <div>{product.key_ingredient_benefits}</div>
       </Card>
 
+      <SocialMedia product={product} />
+    </div>
+  );
+}
+
+const SocialMedia = ({ product }: { product: Product }) => {
+  const hasVideos =
+    product.dupe_video_reference_link_1 ||
+    product.dupe_video_reference_link_2 ||
+    product.dupe_video_reference_link_3;
+  if (hasVideos) {
+    return (
       <Card title="Social Media">
         <div className="flex flex-col items-center">
           <Videos product={product} />
         </div>
       </Card>
-    </div>
-  );
-}
+    );
+  }
+  return null;
+};
 
 const Videos = ({ product }: { product: Product }) => {
   const videos = [
@@ -95,16 +114,7 @@ const Videos = ({ product }: { product: Product }) => {
   return videos;
 };
 
-const Card = ({ title, children }: { title: string; children: any }) => (
-  <div className="bg-white my-4 rounded-lg">
-    <h4 className="font-semibold text-2xl p-4 border-b border-b-gray-300">
-      {title}
-    </h4>
-    <div className="p-4">{children}</div>
-  </div>
-);
-
-const ProductAlternatives = ({
+const ProductAlternatives: any = ({
   products,
   product,
   setProduct,

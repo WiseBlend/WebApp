@@ -2,19 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
-}
+} */
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-}
+} */
 
 body {
   color: rgb(var(--foreground-rgb));
@@ -35,34 +35,28 @@ header form button {
   height: 54px;
 }
 
-header form input {
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
+header form input,
+.hero h1,
+.products,
+footer {
+  color: #304157;
 }
 
-header form button {
+header form [type='submit'] {
   background: url('/search-icon.svg') #4CADCD no-repeat center;
   background-size: 24px;
   width: 54px;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
 }
 
 .hero h1 {
   font-size: 85px;
-  font-weight: 600;
-  color: #304157;
   line-height: .95em;
 }
 
 .hero .banner {
   background: linear-gradient(90deg, rgba(202, 135, 255, 0.7) 0%, rgba(246, 160, 129, 0.7) 96.92%);
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
   box-shadow: 0px 4px 13px 3px rgba(48, 65, 87, 0.15);
-  color: white;
   font-size: 26px;
-  font-weight: 600;
 }
 
 .hero .image {

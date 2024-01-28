@@ -68,50 +68,46 @@ export default function SearchResults() {
 }
 
 const SocialMedia = ({ product }: { product: Product }) => {
-  const hasVideos =
-    product.dupe_video_reference_link_1 ||
-    product.dupe_video_reference_link_2 ||
-    product.dupe_video_reference_link_3;
-  if (hasVideos) {
+  const videos = [
+    product.dupe_video_reference_link_1,
+    product.dupe_video_reference_link_2,
+    product.dupe_video_reference_link_3,
+  ]
+    .map((url) => {
+      if (url && url.startsWith("http")) {
+        try {
+          // "https://www.youtube.com/shorts/qwerty",
+          let videoId = url.split("/shorts/")[1];
+          if (!videoId) {
+            // "https://www.youtube.com/watch?v=aaa&pp=bbb"
+            videoId = new URLSearchParams(url.split("?")[1]).get("v");
+          }
+          const src = "https://www.youtube.com/embed/" + videoId;
+          return (
+            <iframe
+              key={videoId}
+              className="m-6 w-3/5 min-h-96 rounded-xl"
+              allowFullScreen
+              src={src}
+            ></iframe>
+          );
+        } catch (ex) {}
+      }
+      return null;
+    })
+    .filter((video) => video !== null);
+
+
+  if (videos.length) {
     return (
       <Card title="Social Media">
         <div className="flex flex-col items-center">
-          <Videos product={product} />
+          {videos}
         </div>
       </Card>
     );
   }
   return null;
-};
-
-const Videos = ({ product }: { product: Product }) => {
-  const videos = [
-    product.dupe_video_reference_link_1,
-    product.dupe_video_reference_link_2,
-    product.dupe_video_reference_link_3,
-  ].map((url) => {
-    if (url && url.startsWith("http")) {
-      try {
-        // "https://www.youtube.com/shorts/qwerty",
-        let videoId = url.split("/shorts/")[1];
-        if (!videoId) {
-          // "https://www.youtube.com/watch?v=aaa&pp=bbb"
-          videoId = new URLSearchParams(url.split("?")[1]).get("v");
-        }
-        const src = "https://www.youtube.com/embed/" + videoId;
-        return (
-          <iframe
-            key={videoId}
-            className="m-6 w-3/5 min-h-96 rounded-xl"
-            allowFullScreen
-            src={src}
-          ></iframe>
-        );
-      } catch (ex) {}
-    }
-    return null;
-  });
-  return videos;
 };
 
 const ProductAlternatives: any = ({

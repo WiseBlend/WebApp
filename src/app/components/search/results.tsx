@@ -90,8 +90,10 @@ const ProductAlternative = ({
   const inlineStyle = { backgroundImage: `url(${product.dupe_product_image})` };
   return (
     <div
-      className="bg-white border border-gray-300 rounded-lg px-3 py-5 flex grow basis-full cursor-pointer"
+      className="bg-white border border-gray-300 outline outline-0 hover:border-transparent hover:outline-2 hover:outline-cyan-500 rounded-lg px-3 py-5 flex grow basis-full cursor-pointer"
       onClick={() => setProduct(product)}
+      onKeyUp={(e) => e.key === "Enter" && setProduct(product)}
+      tabIndex={0}
     >
       <div
         className="basis-1/3 bg-contain bg-no-repeat bg-center"

@@ -51,9 +51,57 @@ export default function SearchResults() {
           />
         </div>
       </div>
+
+      <Card title="Active Ingredients">
+        <div>{product.key_ingredient_benefits}</div>
+      </Card>
+
+      <Card title="Social Media">
+        <div className="flex flex-col items-center">
+          <Videos product={product} />
+        </div>
+      </Card>
     </div>
   );
 }
+
+const Videos = ({ product }: { product: Product }) => {
+  const videos = [
+    product.dupe_video_reference_link_1,
+    product.dupe_video_reference_link_2,
+    product.dupe_video_reference_link_3,
+  ].map((video) => {
+    if (video && video.startsWith("http")) {
+      try {
+        // "https://www.youtube.com/shorts/qwerty",
+        let id = video.split("/shorts/")[1];
+        if (!id) {
+          // "https://www.youtube.com/watch?v=aaa&pp=bbb"
+          id = new URLSearchParams(video.split("?")[1]).get("v");
+        }
+        const src = "https://www.youtube.com/embed/" + id;
+        return (
+          <iframe
+            className="m-6 w-3/5 min-h-96"
+            allowFullScreen
+            src={src}
+          ></iframe>
+        );
+      } catch (ex) {}
+    }
+    return null;
+  });
+  return videos;
+};
+
+const Card = ({ title, children }: { title: string; children: any }) => (
+  <div className="bg-white my-4 rounded-lg">
+    <h4 className="font-semibold text-2xl p-4 border-b border-b-gray-300">
+      {title}
+    </h4>
+    <div className="p-4">{children}</div>
+  </div>
+);
 
 const ProductAlternatives = ({
   products,

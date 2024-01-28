@@ -102,7 +102,7 @@ const Videos = ({ product }: { product: Product }) => {
         return (
           <iframe
             key={videoId}
-            className="m-6 w-3/5 min-h-96"
+            className="m-6 w-3/5 min-h-96 rounded-xl"
             allowFullScreen
             src={src}
           ></iframe>

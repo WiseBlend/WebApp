@@ -18,12 +18,68 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
+
+  background-image: url('/background.svg');
+  background-size: cover;
+}
+
+header form input,
+header form button {
+  box-shadow: -1px 4px 14px 4px #0000000F;
+  height: 54px;
+}
+
+header form input {
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+header form button {
+  background: url('/search-icon.svg') #4CADCD no-repeat center;
+  background-size: 24px;
+  width: 54px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.hero h1 {
+  font-size: 85px;
+  font-weight: 600;
+  color: #304157;
+  line-height: .95em;
+}
+
+.hero .banner {
+  background: linear-gradient(90deg, rgba(202, 135, 255, 0.7) 0%, rgba(246, 160, 129, 0.7) 96.92%);
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  box-shadow: 0px 4px 13px 3px rgba(48, 65, 87, 0.15);
+  color: white;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.hero .image {
+  background-image: url('/hero-image.png'), url('/hero-image-shape-1.png'), url('/hero-image-shape-2.png');
+  background-position: center center, 20px 385px, right 88px;
+  width: 625px;
+  height: 565px;
+}
+
+@media only screen and (min-width: 1024px) {
+  .hero .banner {
+    position: relative;
+    left: -25px;
+  }
+  .hero .image {
+    right: -55px;
+  }
 }
 
 @layer utilities {

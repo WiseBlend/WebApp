@@ -97,13 +97,10 @@ const SocialMedia = ({ product }: { product: Product }) => {
     })
     .filter((video) => video !== null);
 
-
   if (videos.length) {
     return (
       <Card title="Social Media">
-        <div className="flex flex-col items-center">
-          {videos}
-        </div>
+        <div className="flex flex-col items-center">{videos}</div>
       </Card>
     );
   }
@@ -145,13 +142,13 @@ const ProductAlternative = ({
   const inlineStyle = { backgroundImage: `url(${product.dupe_product_image})` };
   return (
     <div
-      className="bg-white border border-gray-300 outline outline-0 hover:border-transparent hover:outline-2 hover:outline-cyan-500 rounded-lg px-3 py-5 flex grow basis-full cursor-pointer"
+      className="bg-white border border-gray-300 outline outline-0 hover:border-transparent hover:outline-2 hover:outline-cyan-500 rounded-lg px-3 py-5 flex grow basis-full cursor-pointer items-center"
       onClick={() => setProduct(product)}
       onKeyUp={(e) => e.key === "Enter" && setProduct(product)}
       tabIndex={0}
     >
       <div
-        className="basis-1/3 bg-contain bg-no-repeat bg-center"
+        className="basis-1/3 h-full bg-contain bg-no-repeat bg-center"
         style={inlineStyle}
       ></div>
       <div className="py-5 grow">

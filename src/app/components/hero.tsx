@@ -17,7 +17,7 @@ export default function Hero() {
         <br />
         the same function!
       </div>
-      <div className="image static lg:absolute max-w-full lg:max-w-none top-0 bg-no-repeat -z-10 lg:z-10 opacity-50 lg:opacity-100"></div>
+      <div className="image static lg:absolute max-w-full lg:max-w-none top-0 bg-no-repeat -z-10 lg:z-10"></div>
     </div>
   );
 }

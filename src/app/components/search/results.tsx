@@ -13,13 +13,13 @@ export default function SearchResults() {
   const [product, setProduct] = useState<Product>(products[0]);
 
   return (
-    <div className="products mt-12">
-      <div className="flex gap-x-8">
+    <div className="products mt-6 lg:mt-12 px-4 lg:px-0">
+      <div className="flex flex-col lg:flex-row lg:gap-x-8">
         <div
-          className="bg-white border border-gray-300 rounded-lg bg-contain bg-no-repeat bg-center grow basis-full"
+          className="min-h-64 bg-white border border-gray-300 rounded-lg bg-contain bg-no-repeat bg-center grow basis-full"
           style={{ backgroundImage: `url(${product.image})` }}
         ></div>
-        <div className="grow basis-full">
+        <div className="grow basis-full mt-4 lg:mt-0">
           <h2 className={`text-6xl font-semibold ${heading.className}`}>
             {product.brand}
           </h2>
@@ -71,7 +71,7 @@ const SocialMedia = ({ product }: { product: Product }) => {
           return (
             <iframe
               key={videoId}
-              className="m-6 w-3/5 min-h-96 rounded-xl"
+              className="m-6 w-full lg:w-3/5 min-h-96 rounded-xl"
               allowFullScreen
               src={src}
             ></iframe>

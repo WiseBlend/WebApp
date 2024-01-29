@@ -57,7 +57,6 @@ export default function SearchForm() {
         required
         className="grow px-4 rounded-l-2xl"
         placeholder="Enter product URL"
-        defaultValue="http://a.b.c"
       />
       <button type="submit" className="rounded-r-2xl"></button>
     </form>

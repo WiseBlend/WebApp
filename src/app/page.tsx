@@ -10,7 +10,7 @@ export default function Home() {
   const { products } = useContext(SearchContext);
 
   return (
-    <div className="flex flex-col max-w-5xl min-h-screen mx-auto">
+    <div className="flex flex-col max-w-full lg:max-w-5xl min-h-screen mx-auto">
       <Header />
       <main>{products.length ? <SearchResults /> : <Hero />}</main>
       {products.length ? <Footer /> : null}

@@ -5,8 +5,8 @@ import { SearchForm } from "./search";
 
 export default function Header() {
   return (
-    <header className="flex py-8">
-      <a href="/" className="flex items-center">
+    <header className="lg:flex py-8">
+      <a href="/" className="flex px-4 lg:px-0 mb-6 lg:mb-0 items-center">
         <Image
           src="/wiseblend-logo.svg"
           width={173}

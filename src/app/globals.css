@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  width: 100%;
+}
+
 /* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -27,6 +31,7 @@ body {
 
   background-image: url('/background.svg');
   background-size: cover;
+  width: 100%;
 }
 
 header form input,
@@ -48,11 +53,6 @@ header form [type='submit'] {
   width: 54px;
 }
 
-.hero h1 {
-  font-size: 85px;
-  line-height: .95em;
-}
-
 .hero .banner {
   background: linear-gradient(90deg, rgba(202, 135, 255, 0.7) 0%, rgba(246, 160, 129, 0.7) 96.92%);
   box-shadow: 0px 4px 13px 3px rgba(48, 65, 87, 0.15);
@@ -67,6 +67,11 @@ header form [type='submit'] {
 }
 
 @media only screen and (min-width: 1024px) {
+  .hero h1 {
+    font-size: 85px;
+    line-height: .95em;
+  }
+
   .hero .banner {
     position: relative;
     left: -25px;
@@ -74,6 +79,7 @@ header form [type='submit'] {
   .hero .image {
     right: -55px;
   }
+
 }
 
 @layer utilities {

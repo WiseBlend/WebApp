@@ -1,7 +1,21 @@
 {
-  "name": "wiseblend",
+  "name": "wiseblend-app",
   "version": "0.1.0",
   "private": true,
+  "description": "",
+  "author": {
+    "name": "Valentin Podkamennyi",
+    "email": "vpodk@users.noreply.github.com",
+    "url": "https://vpodk.com/"
+  },
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:WiseBlend/WebApp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WiseBlend/WebApp/issues"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",

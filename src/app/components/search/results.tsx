@@ -50,6 +50,9 @@ export default function SearchResults() {
       <Card title="Active Ingredients">
         <div>{product.ingredients}</div>
       </Card>
+      <Card title="Justification">
+        <div>{product.justification}</div>
+      </Card>
 
       <SocialMedia product={product} />
     </div>
@@ -128,7 +131,10 @@ const ProductAlternative = ({
   return (
     <div
       className="bg-white border border-gray-300 outline outline-0 hover:border-transparent hover:outline-2 hover:outline-cyan-500 rounded-lg px-3 py-5 flex grow basis-full cursor-pointer items-center"
-      onClick={() => setProduct(product)}
+      onClick={() => {
+        setProduct(product);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }}
       onKeyUp={(e) => e.key === "Enter" && setProduct(product)}
       tabIndex={0}
     >

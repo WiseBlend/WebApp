@@ -4,32 +4,9 @@ import { useContext, useRef } from "react";
 import { SearchContext } from "./context";
 import { Product } from "./types";
 
-const API_ENDPOINT = "/search.json?url=";
-
-const parse = (data: any) => {
-  if (Array.isArray(data)) {
-    return data.map((product) => {
-      return {
-        id: product.id || product.dupe_product_id,
-        name: product.name || product.dupe_product,
-        description: product.description || product.dupe_product_description,
-        image: product.image || product.dupe_product_image,
-        brand: product.brand || product.brand_name,
-        price: product.price || product.dupe_price_in_dollar,
-        size: product.size || product.dupe_size_without_unit,
-        units: product.units || product.dupe_unit_of_size,
-        link: product.link || product.dupe_shopping_link,
-        ingredients: product.ingredients || product.key_ingredient_benefits,
-        videos: product.videos || [
-          product.dupe_video_reference_link_1,
-          product.dupe_video_reference_link_2,
-          product.dupe_video_reference_link_3,
-        ],
-      };
-    }) as Product[];
-  }
-  return [];
-};
+const API_URL_DEV = "http://localhost:3001";
+const API_URL_PROD = "https://api.wiseblend.ai";
+const API_ENDPOINT = "/dupes/search";
 
 export default function SearchForm() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -37,13 +14,16 @@ export default function SearchForm() {
 
   const search = () => {
     const input = inputRef.current;
+    const host = location.hostname === "localhost" ? API_URL_DEV : API_URL_PROD;
+    const endpoint = host + API_ENDPOINT + "?url=";
+    const url = input && input.value.trim();
 
-    if (input && input.value.trim()) {
-      fetch(API_ENDPOINT + encodeURIComponent(input.value.trim()))
+    if (url) {
+      fetch(endpoint + encodeURIComponent(url))
         .then((res) => res.json())
         .then((data) => {
-          setProducts(parse(data));
-          input.value = "";
+          setProducts(data.dupes);
+          input.value = url;
         });
       input.value = "Loading...";
     }

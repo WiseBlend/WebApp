@@ -10,6 +10,7 @@ export type Product = {
   link: string; //product.dupe_shopping_link,
   ingredients: string; //product.key_ingredient_benefits,
   videos: string[]; // [dupe_video_reference_link_1, dupe_video_reference_link_2]
+  justification: string; // product.dupe_justification
 
   // [key: string]: any;
 };

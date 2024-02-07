@@ -6,13 +6,19 @@ const heading = Playfair_Display({ subsets: ["latin"] });
 export default function Hero() {
   return (
     <div className="hero relative mt-6 lg:mt-12">
-      <h1 className={`text-6xl text-center lg:text-left font-semibold ${heading.className}`}>
+      <h1
+        className={`text-6xl text-center lg:text-left font-semibold ${heading.className}`}
+      >
         Blend Smart
         <br />
         Spend Wise
       </h1>
-      <div className="my-8 text-xl text-center lg:text-left">Never overspend on skincare again!</div>
-      <div className={`banner text-white font-semibold p-6 lg:w-3/5 rounded-l-3xl ${font.className}`}>
+      <div className="my-8 text-xl text-center lg:text-left">
+        Never overspend on skincare again!
+      </div>
+      <div
+        className={`banner text-white font-semibold p-6 lg:w-3/5 rounded-l-3xl ml-4 lg:ml-0 ${font.className}`}
+      >
         Use AI to find cheaper alternatives with
         <br />
         the same function!

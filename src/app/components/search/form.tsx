@@ -22,7 +22,7 @@ export default function SearchForm() {
       fetch(endpoint + encodeURIComponent(url))
         .then((res) => res.json())
         .then((data) => {
-          setProducts(data.dupes);
+          setProducts(data.dupes || []);
           input.value = url;
         });
       input.value = "Loading...";

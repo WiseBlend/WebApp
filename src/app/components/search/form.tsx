@@ -45,6 +45,8 @@ export default function SearchForm() {
           setProducts(data.dupes || []);
           reset();
         });
+    } else {
+      reset();
     }
   };
 

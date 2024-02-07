@@ -54,7 +54,7 @@ export default function SearchForm() {
         ref={inputRef}
         type="url"
         className="grow px-4 rounded-l-2xl"
-        placeholder="Enter product URL"
+        placeholder="Enter product URL or product screenshot"
       />
       <input
         ref={imageRef}
@@ -62,6 +62,8 @@ export default function SearchForm() {
         className="pr-2"
         role="button"
         onChange={search}
+        accept="image/*"
+        title="Upload screenshot"
       />
       <button type="submit" className="rounded-r-2xl"></button>
     </form>

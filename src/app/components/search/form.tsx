@@ -7,6 +7,7 @@ import { Product } from "./types";
 const API_URL_DEV = "http://localhost:3001";
 const API_URL_PROD = "https://api.wiseblend.ai";
 const API_ENDPOINT = "/dupes/search";
+const DEFAULT_URL = "https://www.obagi.com/products/professional-c-serum-20";
 
 export default function SearchForm() {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -24,19 +25,11 @@ export default function SearchForm() {
     if (input) input.value = "Loading...";
 
     const reset = () => {
-      if (input) input.value = "";
+      if (input) input.value = DEFAULT_URL;
       if (image) image.value = "";
     };
 
-    if (url) {
-      fetch(endpoint + encodeURIComponent(url))
-        .then((res) => res.json())
-        .then((data) => {
-          setProducts(data.dupes || []);
-          reset();
-          input.value = url;
-        });
-    } else if (img) {
+    if (img) {
       const data = new FormData();
       data.append("image", img);
       fetch(endpoint, { method: "POST", body: data })
@@ -44,6 +37,14 @@ export default function SearchForm() {
         .then((data) => {
           setProducts(data.dupes || []);
           reset();
+        });
+    } else if (url) {
+      fetch(endpoint + encodeURIComponent(url))
+        .then((res) => res.json())
+        .then((data) => {
+          setProducts(data.dupes || []);
+          reset();
+          input.value = url;
         });
     } else {
       reset();
@@ -57,6 +58,7 @@ export default function SearchForm() {
         type="url"
         className="grow px-4 rounded-l-2xl"
         placeholder="Enter product URL or product screenshot"
+        defaultValue={DEFAULT_URL}
       />
       <input
         ref={imageRef}
